@@ -1,6 +1,6 @@
 package Baseline.VTree.service.graph;
 
-import Baseline.VTree.domain.VtreeVariable;
+import Baseline.VTree.domain.VTreeVariable;
 import Baseline.VTree.domain.VTreeVertex;
 import Baseline.VTree.service.dto.VTreeUpdateProcessDTO;
 import Baseline.base.domain.Car;
@@ -30,8 +30,8 @@ public class VTreeCarService extends CarService {
 
     @Override
     protected void updateActive(int originalActiveName, int activeName, Car car) {
-        VTreeVertex originalVertex = VtreeVariable.INSTANCE.getVertex(originalActiveName),
-                vertex = VtreeVariable.INSTANCE.getVertex(activeName);
+        VTreeVertex originalVertex = VTreeVariable.INSTANCE.getVertex(originalActiveName),
+                vertex = VTreeVariable.INSTANCE.getVertex(activeName);
 
         originalVertex.removeCar(car);
         vertex.addCar(car);

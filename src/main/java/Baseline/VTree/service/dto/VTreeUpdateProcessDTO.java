@@ -1,6 +1,6 @@
 package Baseline.VTree.service.dto;
 
-import Baseline.VTree.domain.VtreeVariable;
+import Baseline.VTree.domain.VTreeVariable;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -29,9 +29,9 @@ public class VTreeUpdateProcessDTO {
 
     public Set<Integer> mergeChangedActive() {
         Set<Integer> changedActiveSet = change2ActiveSet.stream()
-                .filter(name -> VtreeVariable.INSTANCE.getVertex(name).isActive()).collect(Collectors.toSet());
+                .filter(name -> VTreeVariable.INSTANCE.getVertex(name).isActive()).collect(Collectors.toSet());
         changedActiveSet.addAll(change2InActiveSet.stream()
-                .filter(name -> !VtreeVariable.INSTANCE.getVertex(name).isActive()).collect(Collectors.toSet()));
+                .filter(name -> !VTreeVariable.INSTANCE.getVertex(name).isActive()).collect(Collectors.toSet()));
         change2ActiveSet = null;
         change2InActiveSet = null;
         return changedActiveSet;

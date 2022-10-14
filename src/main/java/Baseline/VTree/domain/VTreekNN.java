@@ -18,7 +18,7 @@ public class VTreekNN extends Knn {
     public VTreekNN(int queryName) {
         this.queryName = queryName;
         this.kCars = new PriorityQueue<>(new Car.QueryDisComprator());
-        this.queryVertex = VtreeVariable.INSTANCE.getVertex(queryName);
+        this.queryVertex = VTreeVariable.INSTANCE.getVertex(queryName);
         searchLimit = Integer.MAX_VALUE;
 
 
@@ -26,8 +26,8 @@ public class VTreekNN extends Knn {
 
     public void knn() {
         long startKnn = System.nanoTime();
-        Node gnav = VtreeVariable.INSTANCE.getCluster(queryVertex.getClusterName()).getGNAV(queryName);
-        VTreeVertex u = VtreeVariable.INSTANCE.getVertex(gnav.getName());
+        Node gnav = VTreeVariable.INSTANCE.getCluster(queryVertex.getClusterName()).getGNAV(queryName);
+        VTreeVertex u = VTreeVariable.INSTANCE.getVertex(gnav.getName());
         for (Car c : u.cars) {
             c.setQueryDis(gnav.getDis());
         }
@@ -36,7 +36,7 @@ public class VTreekNN extends Knn {
 
         while (gnav.getDis() < searchLimit) {
            gnav = nnav(gnav, u);
-            u = VtreeVariable.INSTANCE.getVertex(gnav.getName());
+            u = VTreeVariable.INSTANCE.getVertex(gnav.getName());
             for (Car c : u.cars) {
                 c.setQueryDis(gnav.getDis());
             }
@@ -47,8 +47,8 @@ public class VTreekNN extends Knn {
     }
 
     private Node nnav(Node gnav, VTreeVertex gnavVertex) {
-        VtreeVariable.INSTANCE.getCluster(gnavVertex.getClusterName()).deleteActive(gnav.getName());
-        return VtreeVariable.INSTANCE.getCluster(queryVertex.getClusterName()).getGNAV(queryName);
+        VTreeVariable.INSTANCE.getCluster(gnavVertex.getClusterName()).deleteActive(gnav.getName());
+        return VTreeVariable.INSTANCE.getCluster(queryVertex.getClusterName()).getGNAV(queryName);
     }
 
     private void updateSearchLimit() {

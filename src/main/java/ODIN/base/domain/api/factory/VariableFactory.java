@@ -8,7 +8,7 @@ import ODIN.base.domain.api.Variable;
 //import com.odin.TenIndex.domain.TenIndexVariable;
 //import com.odin.SGrid.domain.SGridVariable;
 //import com.odin.SIMknn.domain.SIMkNNVariable;
-//import com.odin.vtree.domain.VtreeVariable;
+//import com.odin.vtree.domain.VTreeVariable;
 
 
 import java.util.HashMap;
@@ -24,7 +24,7 @@ public class VariableFactory {
     static {
         variableFactory.put(IndexType.ODIN, ODINVariable.INSTANCE);
 //        variableFactory.put(IndexType.SGRID, SGridVariable.INSTANCE);
-//        variableFactory.put(IndexType.VTREE, VtreeVariable.INSTANCE);
+//        variableFactory.put(IndexType.VTREE, VTreeVariable.INSTANCE);
 //        variableFactory.put(IndexType.SIMKNN, SIMkNNVariable.INSTANCE);
 //        variableFactory.put(IndexType.ERKNN, ERkNNVariable.INSTANCE);
 //        variableFactory.put(IndexType.TENINDEX, TenIndexVariable.INSTANCE);

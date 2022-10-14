@@ -69,7 +69,7 @@ public class VTreeCluster extends Cluster<VTreeClusterLink> {
             return;
         }
         boolean propagation = false;
-        VTreeCluster parentCluster = VtreeVariable.INSTANCE.getCluster(parentName);
+        VTreeCluster parentCluster = VTreeVariable.INSTANCE.getCluster(parentName);
 
 
         for (int borderName : borderNames) {
@@ -131,7 +131,7 @@ public class VTreeCluster extends Cluster<VTreeClusterLink> {
         }
         gridDis = -1;
 
-        VTreeCluster parentCluster = VtreeVariable.INSTANCE.getCluster(parentName);
+        VTreeCluster parentCluster = VTreeVariable.INSTANCE.getCluster(parentName);
         int[] outerDis = new int[parentCluster.getClusterLinkMap().size()];
 
         int j = 0;
@@ -150,7 +150,7 @@ public class VTreeCluster extends Cluster<VTreeClusterLink> {
                     outerDis[j] = dis;
                 }
             }
-            if (VtreeVariable.INSTANCE.getVertex(outerName).isBorder(parentCluster.layer)) {
+            if (VTreeVariable.INSTANCE.getVertex(outerName).isBorder(parentCluster.layer)) {
                 borderDis[borderIndex] = outerDis[j];
                 if (outerDis[j] != -1 && (gridDis == -1 || gridDis > outerDis[j])) {
                     gridDis = outerDis[j];
@@ -162,7 +162,7 @@ public class VTreeCluster extends Cluster<VTreeClusterLink> {
             }
             j++;
         }
-        return VtreeVariable.INSTANCE.getCluster(parentName).getGNAVIterationUp(gnav, gridDis, borderDis);
+        return VTreeVariable.INSTANCE.getCluster(parentName).getGNAVIterationUp(gnav, gridDis, borderDis);
     }
 
     public void deleteActive(Integer activeName) {
@@ -190,7 +190,7 @@ public class VTreeCluster extends Cluster<VTreeClusterLink> {
     private void deleteActiveIterationUp(int activeName) {
         if (layer == 0) return;
 
-        VTreeCluster parentCluster = VtreeVariable.INSTANCE.getCluster(parentName);
+        VTreeCluster parentCluster = VTreeVariable.INSTANCE.getCluster(parentName);
         boolean propagation = false;
 
         parentCluster.activeNames.remove(activeName);
@@ -199,9 +199,9 @@ public class VTreeCluster extends Cluster<VTreeClusterLink> {
         for (Integer name : parentCluster.getClusterLinkMap().keySet()) {
             if (parentCluster.getClusterLinkMap().get(name).equalLNAV(activeName)) {
                 propagation = true;
-                VTreeVertex vertex = VtreeVariable.INSTANCE.getVertex(name);
+                VTreeVertex vertex = VTreeVariable.INSTANCE.getVertex(name);
                 String leafClusterName = vertex.getClusterName();
-                Node newLNAV = VtreeVariable.INSTANCE.getCluster(VtreeVariable.INSTANCE.getLayerClusterName(leafClusterName, layer)).clusterLinkMap.get(name).getLNAV();
+                Node newLNAV = VTreeVariable.INSTANCE.getCluster(VTreeVariable.INSTANCE.getLayerClusterName(leafClusterName, layer)).clusterLinkMap.get(name).getLNAV();
                 parentCluster.getClusterLinkMap().get(name).setLNAV(
                         newLNAV
                 );

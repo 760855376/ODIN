@@ -36,12 +36,12 @@ public class BaselineApplication implements CommandLineRunner {
  * Error queryName:142095
  */
         IndexDTO indexDTO = new IndexDTO();
-        indexDTO.setIndexType("TenIndex");
+        indexDTO.setIndexType("VTree");
         indexDTO.setBranch(4);
-        indexDTO.setSubGraphSize(200);
+        indexDTO.setSubGraphSize(300);
         indexDTO.setDistribution("RANDOM");
         indexDTO.setMapInfo("NY");
-        indexDTO.setCarNum(60000);
+        indexDTO.setCarNum(20000);
         indexDTO.setLeastActiveNum(5);
         indexDTO.setK(10);
         indexDTO.setTimeType("Second");

@@ -9,10 +9,10 @@ import lombok.Getter;
  * 2022/9/14 zhoutao
  */
 @Getter
-public class VtreeVariable extends Variable<VTreeVertex, VTreeCluster> {
-    public static final VtreeVariable INSTANCE = new VtreeVariable();
+public class VTreeVariable extends Variable<VTreeVertex, VTreeCluster> {
+    public static final VTreeVariable INSTANCE = new VTreeVariable();
 
-    private VtreeVariable() {
+    private VTreeVariable() {
     }
 
     @Override
