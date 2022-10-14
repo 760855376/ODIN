@@ -1,7 +1,7 @@
 package Baseline.VTree.service.graph;
 
 import Baseline.VTree.domain.VTreeCluster;
-import Baseline.VTree.domain.VtreeVariable;
+import Baseline.VTree.domain.VTreeVariable;
 import Baseline.VTree.domain.VTreeVertex;
 import Baseline.VTree.service.build.VTreeClusterBuilder;
 import Baseline.base.domain.Node;
@@ -24,29 +24,29 @@ public class VTreeVariableService implements IVariableService {
 
     @Override
     public void buildVertex(int vertexName, String clusterName) {
-        if (!VtreeVariable.INSTANCE.containsClusterKey(clusterName)) {
-            VtreeVariable.INSTANCE.addCluster(clusterName, VTreeClusterBuilder.build(clusterName, true));
+        if (!VTreeVariable.INSTANCE.containsClusterKey(clusterName)) {
+            VTreeVariable.INSTANCE.addCluster(clusterName, VTreeClusterBuilder.build(clusterName, true));
         }
 
         VTreeVertex vertex = new VTreeVertex();
         vertex.setName(vertexName);
         vertex.setClusterName(clusterName);
-        VtreeVariable.INSTANCE.addVertex(vertex);
-        VtreeVariable.INSTANCE.getCluster(clusterName).addVertex(vertexName);
+        VTreeVariable.INSTANCE.addVertex(vertex);
+        VTreeVariable.INSTANCE.getCluster(clusterName).addVertex(vertexName);
     }
 
     @Override
     public void buildEdge(int vertexName, String[] edgeInfo) {
-        VTreeVertex vertex = VtreeVariable.INSTANCE.getVertex(vertexName);
+        VTreeVertex vertex = VTreeVariable.INSTANCE.getVertex(vertexName);
         String clusterName = vertex.getClusterName();
-        VTreeCluster cluster = VtreeVariable.INSTANCE.getCluster(clusterName);
+        VTreeCluster cluster = VTreeVariable.INSTANCE.getCluster(clusterName);
 
         for (int j = 0; j < edgeInfo.length; j += 2) {
             int neighbor = Integer.parseInt(edgeInfo[j]), dis = Integer.parseInt(edgeInfo[j + 1]);
 
             if (neighbor < vertexName) continue;
 
-            VTreeVertex neighborVertex = VtreeVariable.INSTANCE.getVertex(neighbor);
+            VTreeVertex neighborVertex = VTreeVariable.INSTANCE.getVertex(neighbor);
 
             // add Origion Edge
             vertex.addOrigionEdge(new Node(neighbor, dis));
@@ -56,7 +56,7 @@ public class VTreeVariableService implements IVariableService {
                 cluster.addClusterLink(vertexName, neighbor, dis);
             } else {
                 cluster.addBorderLink(vertexName, neighbor, dis);
-                VtreeVariable.INSTANCE.getCluster(neighborVertex.getClusterName())
+                VTreeVariable.INSTANCE.getCluster(neighborVertex.getClusterName())
                         .addBorderLink(neighbor, vertexName, dis);
             }
 

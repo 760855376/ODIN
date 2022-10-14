@@ -2,7 +2,7 @@ package Baseline.VTree.service.graph;
 
 import Baseline.VTree.domain.VTreeCluster;
 import Baseline.VTree.domain.VTreeClusterLink;
-import Baseline.VTree.domain.VtreeVariable;
+import Baseline.VTree.domain.VTreeVariable;
 import Baseline.base.domain.Node;
 import Baseline.base.service.utils.DisComputerUtil;
 import org.springframework.stereotype.Service;
@@ -19,7 +19,7 @@ import java.util.stream.Collectors;
 public class VTreeClusterService {
 
     public void computeClusters() {
-        VtreeVariable.INSTANCE.getClusters().parallelStream().forEach(this::computeCluster);
+        VTreeVariable.INSTANCE.getClusters().parallelStream().forEach(this::computeCluster);
     }
 
     public void computeCluster(VTreeCluster cluster) {
@@ -37,7 +37,7 @@ public class VTreeClusterService {
         Map<Integer, VTreeClusterLink> clusterLinkMap = cluster.getClusterLinkMap();
 
         List<Integer> borderNames = clusterLinkMap.keySet().stream()
-                .filter(vertexName -> VtreeVariable.INSTANCE.getVertex(vertexName).isBorder(level))
+                .filter(vertexName -> VTreeVariable.INSTANCE.getVertex(vertexName).isBorder(level))
                 .collect(Collectors.toList());
 
         for (int i = 0; i < borderNames.size(); i++) {

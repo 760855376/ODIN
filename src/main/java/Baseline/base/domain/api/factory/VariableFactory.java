@@ -1,13 +1,13 @@
 package Baseline.base.domain.api.factory;
 
 import Baseline.ERkNN.domain.ERkNNVariable;
+import Baseline.VTree.domain.VTreeVariable;
 import Baseline.base.domain.GlobalVariable;
 import Baseline.base.domain.api.Variable;
 import Baseline.base.domain.enumeration.IndexType;
 import Baseline.SGrid.domain.SGridVariable;
 import Baseline.SIMkNN.domain.SIMkNNVariable;
 import Baseline.TenIndex.domain.TenIndexVariable;
-import Baseline.VTree.domain.VtreeVariable;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -21,7 +21,7 @@ public class VariableFactory {
 
     static {
         variableFactory.put(IndexType.SGrid, SGridVariable.INSTANCE);
-        variableFactory.put(IndexType.VTree, VtreeVariable.INSTANCE);
+        variableFactory.put(IndexType.VTree, VTreeVariable.INSTANCE);
         variableFactory.put(IndexType.SIMkNN, SIMkNNVariable.INSTANCE);
         variableFactory.put(IndexType.ERkNN, ERkNNVariable.INSTANCE);
         variableFactory.put(IndexType.TenIndex, TenIndexVariable.INSTANCE);

@@ -1,7 +1,7 @@
 package Baseline.VTree.service.graph;
 
 import Baseline.VTree.domain.VTreeCluster;
-import Baseline.VTree.domain.VtreeVariable;
+import Baseline.VTree.domain.VTreeVariable;
 import Baseline.VTree.domain.VTreeVertex;
 import Baseline.base.domain.Car;
 import Baseline.base.domain.GlobalVariable;
@@ -20,7 +20,7 @@ public class VTreeActiveService {
     public void buildActive() {
         for (Car car : GlobalVariable.CARS) {
             int active = car.getActive();
-            VTreeVertex activeVertex = VtreeVariable.INSTANCE.getVertex(active);
+            VTreeVertex activeVertex = VTreeVariable.INSTANCE.getVertex(active);
 
             if (!activeVertex.isActive()) {
                 // build active info
@@ -33,7 +33,7 @@ public class VTreeActiveService {
     }
 
     private void addActive(VTreeVertex vertex) {
-        VTreeCluster leafCluster = VtreeVariable.INSTANCE.getLeafCluster(vertex);
+        VTreeCluster leafCluster = VTreeVariable.INSTANCE.getLeafCluster(vertex);
         leafCluster.addActive(vertex.getName());
     }
 

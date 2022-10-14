@@ -1,6 +1,6 @@
 package Baseline.VTree.service;
 
-import Baseline.VTree.domain.VtreeVariable;
+import Baseline.VTree.domain.VTreeVariable;
 import Baseline.VTree.service.build.VTreeClusterBuilder;
 import Baseline.VTree.service.dto.VTreeUpdateProcessDTO;
 import Baseline.VTree.service.graph.VTreeActiveService;
@@ -45,7 +45,7 @@ public class VTreeIndexService extends IndexService {
 
     public void buildTree() {
         variableService.buildFullTreeKey();
-        VtreeVariable.INSTANCE.addCluster("0", VTreeClusterBuilder.build("0", false));
+        VTreeVariable.INSTANCE.addCluster("0", VTreeClusterBuilder.build("0", false));
     }
 
     @Override
@@ -53,10 +53,10 @@ public class VTreeIndexService extends IndexService {
         VTreeUpdateProcessDTO processDTO = ((VTreeCarService) carService).getUpdateProcessDTO();
         Set<Integer> changedActiveSet = processDTO.mergeChangedActive();
         for (Integer name : changedActiveSet) {
-            if (VtreeVariable.INSTANCE.getVertex(name).isActive()) {
-                VtreeVariable.INSTANCE.getCluster(VtreeVariable.INSTANCE.getVertex(name).getClusterName()).addActive(name);
+            if (VTreeVariable.INSTANCE.getVertex(name).isActive()) {
+                VTreeVariable.INSTANCE.getCluster(VTreeVariable.INSTANCE.getVertex(name).getClusterName()).addActive(name);
             } else {
-                VtreeVariable.INSTANCE.getCluster(VtreeVariable.INSTANCE.getVertex(name).getClusterName()).deleteActive(name);
+                VTreeVariable.INSTANCE.getCluster(VTreeVariable.INSTANCE.getVertex(name).getClusterName()).deleteActive(name);
             }
         }
     }

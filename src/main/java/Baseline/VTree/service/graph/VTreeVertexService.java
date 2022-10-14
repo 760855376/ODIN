@@ -1,7 +1,7 @@
 package Baseline.VTree.service.graph;
 
 
-import Baseline.VTree.domain.VtreeVariable;
+import Baseline.VTree.domain.VTreeVariable;
 import Baseline.VTree.domain.VTreeVertex;
 import Baseline.base.domain.Node;
 import org.springframework.stereotype.Service;
@@ -19,7 +19,7 @@ public class VTreeVertexService {
      * build borders
      */
     public void buildBorders() {
-        VtreeVariable.INSTANCE.getVertices().parallelStream().forEach(this::buildBorder);
+        VTreeVariable.INSTANCE.getVertices().parallelStream().forEach(this::buildBorder);
     }
 
     /**
@@ -30,7 +30,7 @@ public class VTreeVertexService {
         int minIndex = clusterNames.length;
         // traverse neighbor nodes
         for (Node node : vertex.getOrigionEdges()) {
-            VTreeVertex neighborVertex = VtreeVariable.INSTANCE.getVertex(node.getName());
+            VTreeVertex neighborVertex = VTreeVariable.INSTANCE.getVertex(node.getName());
             String[] neighborClusterNames = neighborVertex.getClusterNames();
 
 //          Determine whether the i -th layer is a boundary point
