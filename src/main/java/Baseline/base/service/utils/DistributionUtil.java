@@ -160,9 +160,13 @@ public class DistributionUtil {
     }
     public static List<Integer> getRandomVertexList(){
         ArrayList<Integer> list = new ArrayList<Integer>() ;
-        while (list.size()!= GlobalVariable.COMPUTE_NUM){
-            list.add(GlobalVariable.RANDOM.nextInt(GlobalVariable.VERTEX_NUM));
+        for (int i=0;i<GlobalVariable.COMPUTE_NUM;++i){
+            int j=10*i;
+            list.add(j);
         }
+//        while (list.size()!= GlobalVariable.COMPUTE_NUM){
+//            list.add(GlobalVariable.RANDOM.nextInt(GlobalVariable.VERTEX_NUM));
+//        }
         return list;
     }
 }

@@ -41,19 +41,19 @@ public class BaselineApplication implements CommandLineRunner {
         indexDTO.setSubGraphSize(300);
         indexDTO.setDistribution("RANDOM");
         indexDTO.setMapInfo("NY");
-        indexDTO.setCarNum(20000);
+        indexDTO.setCarNum(30000);
         indexDTO.setLeastActiveNum(5);
-        indexDTO.setK(50);
+        indexDTO.setK(10);
         indexDTO.setTimeType("Second");
         indexDTO.setMemory(true);
         indexDTO.setMemoryType("GB");
         System.out.println(controller.buildIndex(indexDTO).getResult());
         KnnDTO knnDTO =new KnnDTO();
-        knnDTO.setK(50);
+        knnDTO.setK(10);
         knnDTO.setQueryName(-1);
         knnDTO.setPrintKnn(false);
         knnDTO.setDijkstra(false);
-        knnDTO.setQuerySize(10);
+        knnDTO.setQuerySize(100);
         System.out.println(controller.knn(knnDTO).getResult());
 
 

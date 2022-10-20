@@ -40,12 +40,12 @@ public class VTreeService implements IKnnService {
                 initKnn(i);
                 long start = System.nanoTime();
                 knn.knn();
-                long end = (long) ((System.nanoTime() - start) / 1000000.0 / GlobalVariable.COMPUTE_NUM);
+                long end = (long) ((System.nanoTime() - start) / 1000.0 / GlobalVariable.COMPUTE_NUM);
                 endKnn += end;
 //                System.out.println(end);
             }
 //            long endKnnt= (long) ((System.nanoTime() - startKnn) / 1000.0);
-            System.out.println(endKnn);
+            System.out.println("QueryTime:"+endKnn+"us");
 //            knn.setQueryTime(endKnn);
 //            System.out.println("querytime1"+endKnn+"us");
 //            System.out.println("querytime2"+endKnnt+"us");
