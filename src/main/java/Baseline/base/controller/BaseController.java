@@ -59,7 +59,8 @@ public class BaseController {
         if (knnDTO.getQueryName() > -1 && knnDTO.getQueryName() < GlobalVariable.VERTEX_NUM) {
             knnService.knnSearch(knnDTO.getQueryName());
         } else {
-            knnService.knnSearch(DistributionUtil.getVertexName());
+            knnService.knnSearch(-1);
+//            knnService.knnSearch(DistributionUtil.getVertexName());
         }
         return knnService.buildResult(knnDTO);
     }

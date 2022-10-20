@@ -69,5 +69,7 @@ public class GlobalVariableService {
      */
     public void initKnnVariable(KnnDTO knnDTO) {
         GlobalVariable.K = knnDTO.getK();
+        GlobalVariable.COMPUTE_NUM = knnDTO.getQuerySize();
+
     }
 }

@@ -38,7 +38,7 @@ public class VTreeIndexService extends IndexService {
     protected void build() {
         vertexService.buildBorders();
         clusterService.computeClusters();
-        variableService.buildFullTreeKey();
+//        variableService.buildFullTreeKey();
         buildTree();
         activeService.buildActive();
     }
